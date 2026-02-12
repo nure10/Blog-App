@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blog Application NodeJs</title>
+</head>
+<body>
+
+    <h2>Welcome <%= user.username %></h2>
+    <h1>All Posts</h1>
+
+    <% if (posts.length === 0) { %>
+        <p>No posts available.</p>
+    <% } %>
+
+    <% posts.forEach(function(post){ %>
+        <div style="border:1px solid black; padding:10px; margin:10px;">
+            
+            <h3><%= post.title %></h3>
+
+            <p><%= post.content %></p>
+
+            <small>
+                Author: <%= post.author.username %> <br>
+                Date: <%= post.createdOn.toDateString() %>
+            </small>
+
+            <% if (post.author._id.toString() === user._id.toString()) { %>
+
+                <br><br>
+
+                <a href="/edit-post/<%= post._id %>">Edit</a>
+
+                <form action="/delete-post/<%= post._id %>" 
+                      method="POST" 
+                      style="display:inline;">
+                    <button type="submit">Delete</button>
+                </form>
+
+            <% } %>
+
+        </div>
+    <% }) %>
+
+    <p>Create new post? <a href="/create-post">Create</a></p>
+
+</body>
+</html>

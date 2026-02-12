@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blog Application NodeJs</title>
+</head>
+<body>
+
+    <h2>Welcome <%= user.username %></h2>
+
+    <h1>Create New Post</h1>
+
+    <form action="/create-post" method="POST">
+
+        <div>
+            <label>Title:</label><br>
+            <input type="text" name="title" required>
+        </div>
+
+        <br>
+
+        <div>
+            <label>Content:</label><br>
+            <textarea name="content" rows="5" cols="40" required></textarea>
+        </div>
+
+        <br>
+
+        <button type="submit">Create Post</button>
+
+    </form>
+
+    <br>
+    <a href="/posts">Back to Posts</a>
+
+</body>
+</html>
